@@ -10,34 +10,37 @@ const mongoose = require('mongoose')
 app.use(express.json());
 app.use(cors());
 
-// ==== Database ====
-const UserModel = require('./models/Users')
-mongoose.connect('mongodb+srv://estebanchos:V22Cf1wZoRVajBPx@cluster0.lrocg.mongodb.net/my-kushki?retryWrites=true&w=majority')
+// ==== Database Routes ====
+// const UserModel = require('./models/Users')
+// mongoose.connect('mongodb+srv://estebanchos:V22Cf1wZoRVajBPx@cluster0.lrocg.mongodb.net/my-kushki?retryWrites=true&w=majority')
 
-app.get('/getUsers', (_req, res) => {
-  // empty {} means that it will return all the data
-  UserModel.find({}, (err, result) => {
-    if (err) {
-      res.json(err)
-    } else {
-      res.json(result)
-    }
-  })
-})
+// app.get('/getUsers', (_req, res) => {
+//   // empty {} means that it will return all the data
+//   UserModel.find({}, (err, result) => {
+//     if (err) {
+//       res.json(err)
+//     } else {
+//       res.json(result)
+//     }
+//   })
+// })
 
-app.post('/newUser', async (req, res) => {
-  const user = req.body
-  const newUser = new UserModel(user)
-  await newUser.save()
+const userRoute = require('./routes/userRoute')
+app.use('/users', userRoute)
 
-  res.json(user)
-})
+// app.post('/newUser', async (req, res) => {
+//   const user = req.body
+//   const newUser = new UserModel(user)
+//   await newUser.save()
+
+//   res.json(user)
+// })
 
 
 
 
 
-// ==== Chat ====
+// ====== Chat ======
 const server = http.createServer(app);
 const CHATPORT = process.env.CHAT_PORT || 8081
 
