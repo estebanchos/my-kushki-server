@@ -1,14 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const UsersController = require('../controllers/UsersController')
-require('dotenv').config();
+const authenticate = require('../middleware/authenticate')
 
-router.route('/newUser').post(UsersController.createUser)
+router.post('/newUser', UsersController.createUser)
 
-router.route('/newBudget').post(UsersController.addBudgetItem)
-router.route('/budget').get(UsersController.getBudget)
+router.post('/login', UsersController.authenticateUser)
 
-router.route('/newExpense').post(UsersController.addExpenseItem)
-router.route('/expenses').get(UsersController.getExpenses)
+router.post('/newBudget', authenticate, UsersController.addBudgetItem)
+router.get('/budget', authenticate, UsersController.getBudget)
+
+router.post('/newExpense', authenticate, UsersController.addExpenseItem)
+router.get('/expenses', authenticate, UsersController.getExpenses)
 
 module.exports = router;
