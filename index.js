@@ -23,7 +23,7 @@ server.listen(CHATPORT, () => {
 
 const io = new Server(server, {
   cors: {
-    // update to FED url
+    // dev: 'http://localhost:3000' live: 'https://mykushki.herokuapp.com/'
     origin: 'http://localhost:3000',
     methods: ['GET', 'POST'],
   },
