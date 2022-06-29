@@ -23,8 +23,8 @@ server.listen(CHATPORT, () => {
 
 const io = new Server(server, {
   cors: {
-    // dev: 'http://localhost:3000' live: 'https://mykushki.herokuapp.com/'
-    origin: 'http://localhost:3000',
+    // dev: 'http://localhost:3000' live: 'https://mykushki.herokuapp.com'
+    origin: 'https://mykushki.herokuapp.com',
     methods: ['GET', 'POST'],
   },
 });
