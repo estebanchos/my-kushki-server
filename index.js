@@ -15,16 +15,16 @@ app.use('/users', userRoute)
 
 // ====== Chat ======
 const server = http.createServer(app);
-const CHATPORT = process.env.CHAT_PORT || 8081
+// const CHATPORT = process.env.CHAT_PORT || 8081
 
-server.listen(CHATPORT, () => {
+server.listen(PORT, () => {
   console.log(`Chat server on ${CHATPORT}`)
 })
 
 const io = new Server(server, {
   cors: {
     // dev: 'http://localhost:3000' live: 'https://mykushki.herokuapp.com'
-    origin: 'https://mykushki.herokuapp.com',
+    origin: '*',
     methods: ['GET', 'POST'],
   },
 });
