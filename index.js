@@ -15,9 +15,9 @@ app.use('/users', userRoute)
 
 // ====== Chat ======
 const server = http.createServer(app);
-// const CHATPORT = process.env.CHAT_PORT || 8081
+const CHATPORT = process.env.CHAT_PORT || 8081
 
-server.listen(PORT, () => {
+server.listen(CHATPORT, () => {
   console.log(`Chat server on ${CHATPORT}`)
 })
 
