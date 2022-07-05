@@ -6,7 +6,6 @@ const authenticate = (req, res, next) => {
     }
     
     const authToken = req.headers.authorization.split(' ')[1]
-
     jwt.verify(authToken, process.env.JWT_KEY, (err, decoded) => {
         if (err) {
             return res.status(401).send('Invalid auth token')

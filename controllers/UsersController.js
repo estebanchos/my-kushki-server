@@ -19,8 +19,7 @@ const createUser = async (req, res) => {
             password: hashedPassword
         })
         await newUser.save()
-        res.status(201).json(newUser)
-        // change for success message
+        res.status(201).json({ successSignUp: true })
     }
 }
 
@@ -28,23 +27,31 @@ const authenticateUser = async (req, res) => {
     const { email, password } = req.body
 
     if (!email || !password) {
-        return res.status(400).send('Please enter the required fields');
+        return res.status(400).json({
+            message: 'Please enter the required fields',
+            validLogin: false
+        });
     }
 
     const userFound = await UserModel.findOne({ email: email })
     if (!userFound) {
-        return res.status(400).send('Invalid user')
+        return res.status(400).json({
+            message: 'Invalid user',
+            validLogin: false
+        })
     }
 
     const isPasswordCorrect = bcrypt.compareSync(password, userFound.password)
     if (!isPasswordCorrect) {
-        return res.status(400).send('Invalid password');
+        return res.status(400).json({
+            message: 'Invalid password',
+            validLogin: false
+        });
     }
 
     const token = jwt.sign(
         { email: userFound.email },
-        process.env.JWT_KEY,
-        { expiresIn: '24h' }
+        process.env.JWT_KEY
     )
     res.status(200).json({ token })
 }
