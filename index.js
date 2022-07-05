@@ -15,33 +15,16 @@ app.use(cors());
 
 // // test route to test server
 const testRoute = require('./routes/testRoute')
-app.use(testRoute)
+app.use('/', testRoute)
 
 // ==== Database Routes ====
 const userRoute = require('./routes/userRoute')
 app.use('/users', userRoute)
 
 // ====== Chat ======
-<<<<<<< HEAD
-const server = http.createServer(app);
-const CHATPORT = process.env.CHAT_PORT || 8081
-
-server.listen(CHATPORT, () => {
-  console.log(`Chat server on ${CHATPORT}`)
-})
-
-const io = new Server(server, {
-  cors: {
-    // dev: 'http://localhost:3000' live: 'https://mykushki.herokuapp.com'
-    origin: '*',
-    methods: ['GET', 'POST'],
-  },
-});
-=======
 const server = http.createServer(app)
 // const io = socketio(server, {cors: {origin: '*'}})
 const io = new Server(server, {cors: {origin: '*'}})
->>>>>>> develop
 
 io.on('connection', (socket) => {
   console.log(`User Connected: ${socket.id}`);
