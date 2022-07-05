@@ -113,11 +113,23 @@ const getBudget = async (req, res) => {
     }
 }
 
+const findUserInfo = async (req, res) => {
+    const userEmail = req.user.email
+    try {
+        const currentUser = await UserModel.findOne({ email: userEmail })
+        const name = currentUser.name
+        res.status(200).json(name)
+    } catch (e) {
+        res.status(400).json({ message: e })
+    }
+}
+
 module.exports = {
     createUser,
     authenticateUser,
     addExpenseItem,
     getExpenses,
     addBudgetItem,
-    getBudget
+    getBudget,
+    findUserInfo
 }
