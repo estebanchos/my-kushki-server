@@ -10,6 +10,8 @@ router.post('/login', UsersController.authenticateUser)
 router.post('/newBudget', authenticate, UsersController.addBudgetItem)
 router.get('/budget', authenticate, UsersController.getBudget)
 
+router.get('/userInfo', authenticate, UsersController.findUserInfo)
+
 router.post('/newExpense', authenticate, UsersController.addExpenseItem)
 router.get('/expenses', authenticate, UsersController.getExpenses)
 
