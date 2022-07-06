@@ -93,3 +93,8 @@ Clone repo locally:
 * As a Junior Dev I enjoyed working with Mongo and Mongoose more than MySQL and Knex.
 * The best way to work for me was to implement a feature, debug it, and only then start styling.
 * I managed calculations (e.g. budget total, or category remaining budget) on the front-end. I think it would've been easier to deal with the them in the back-end and just fetch them in the front-end. I will test this approach on the next iteration.
+
+## Contact Info
+[Email](mailto:charlie@carlosocampo.ca "Email")
+
+[LinkedIn](https://www.linkedin.com/in/carlosocampo/ "LinkedIn")
