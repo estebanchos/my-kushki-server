@@ -9,6 +9,7 @@ router.post('/login', UsersController.authenticateUser)
 
 router.post('/newBudget', authenticate, UsersController.addBudgetItem)
 router.get('/budget', authenticate, UsersController.getBudget)
+router.delete('/budget/:budgetId', authenticate, UsersController.deleteBudget)
 
 router.get('/userInfo', authenticate, UsersController.findUserInfo)
 

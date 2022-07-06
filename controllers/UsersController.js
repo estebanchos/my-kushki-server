@@ -74,6 +74,20 @@ const addExpenseItem = async (req, res) => {
     }
 }
 
+const deleteExpense = async (req, res) => {
+    const expenseId = req.params.expenseId
+    const userEmail = req.user.email
+    try {
+        const currentUser = await UserModel.findOne({ email: userEmail })
+        const newExpenses = currentUser.expenses.filter(expense => expense.id !== expenseId)
+        currentUser.expenses = newExpenses
+        await currentUser.save()
+        res.status(200).json(currentUser.expenses)
+    } catch (e) {
+        res.status(400).json({ message: e })
+    }
+}
+
 const getExpenses = async (req, res) => {
     const userEmail = req.user.email
     try {
@@ -97,6 +111,20 @@ const addBudgetItem = async (req, res) => {
         currentUser.budget.push(newBudgetItem)
         await currentUser.save()
         res.status(201).json(newBudgetItem)
+    } catch (e) {
+        res.status(400).json({ message: e })
+    }
+}
+
+const deleteBudget = async (req, res) => {
+    const budgetId = req.params.budgetId
+    const userEmail = req.user.email
+    try {
+        const currentUser = await UserModel.findOne({ email: userEmail })
+        const newBudget = currentUser.budget.filter(budget => budget.id !== budgetId)
+        currentUser.budget = newBudget
+        await currentUser.save()
+        res.status(200).json(currentUser.budget)
     } catch (e) {
         res.status(400).json({ message: e })
     }
@@ -131,5 +159,6 @@ module.exports = {
     getExpenses,
     addBudgetItem,
     getBudget,
-    findUserInfo
+    findUserInfo,
+    deleteBudget
 }
