@@ -18,7 +18,7 @@ Given that First Nations members generally access the internet through their sma
 * Learning modules structure, from basic to advance - pending content creation
     * Recommended articles to external sources to strengthen learning
 
-## Teck Stack
+## Tech Stack
 ### Front-end
 * React
 * Sass
