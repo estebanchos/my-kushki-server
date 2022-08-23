@@ -3,6 +3,7 @@ My Kushki is a web app and iOS app designed to help educate First Nations member
 This MVP and the accompanying iOS app were completed in two weeks. Enhancements are expected as I start working closely with interested First Nations communities.
 
 Front-end repo: [my-kushki client](https://github.com/estebanchos/my-kushki-client "my-kushki client")
+
 iOS repo: [my-kushki iOS](https://github.com/estebanchos/myKushki-iOS "my-kushki iOS")
 
 ## Problem Space
